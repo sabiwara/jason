@@ -18,7 +18,8 @@ defmodule Jason do
 
   @type objects :: :maps | :ordered_objects
 
-  @type decode_opt :: {:keys, keys} | {:strings, strings} | {:floats, floats} | {:objects, objects}
+  @type decode_opt ::
+          {:keys, keys} | {:strings, strings} | {:floats, floats} | {:objects, objects}
 
   @doc """
   Parses a JSON value from `input` iodata.
@@ -70,6 +71,13 @@ defmodule Jason do
     Decoder.parse(input, format_decode_opts(opts))
   end
 
+  @spec decode2(iodata, [decode_opt]) :: {:ok, term} | {:error, DecodeError.t()}
+  def decode2(input, opts \\ []) do
+    input = IO.iodata_to_binary(input)
+    Jason.Decoder2.parse(input, format_decode_opts(opts))
+  end
+
+
   @doc """
   Parses a JSON value from `input` iodata.
 
@@ -88,6 +96,14 @@ defmodule Jason do
   @spec decode!(iodata, [decode_opt]) :: term | no_return
   def decode!(input, opts \\ []) do
     case decode(input, opts) do
+      {:ok, result} -> result
+      {:error, error} -> raise error
+    end
+  end
+
+  @spec decode2!(iodata, [decode_opt]) :: term | no_return
+  def decode2!(input, opts \\ []) do
+    case decode2(input, opts) do
       {:ok, result} -> result
       {:error, error} -> raise error
     end
