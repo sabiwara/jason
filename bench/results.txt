@@ -1,5 +1,3 @@
-==> jason
-Compiling 1 file (.ex)
 Checking jobs don't crash
 Testing Jason Pokedex
 Testing Jason 2 Pokedex
@@ -12,7 +10,7 @@ CPU Information: Apple M1
 Number of Available Cores: 8
 Available memory: 16 GB
 Elixir 1.14.2
-Erlang 25.0
+Erlang 26.0-rc2
 
 Benchmark suite executing with the following configuration:
 warmup: 5 s
@@ -30,34 +28,34 @@ Benchmarking Jason 2 with input Small ...
 
 ##### With input Pokedex #####
 Name              ips        average  deviation         median         99th %
-Jason 2        1.57 K      636.63 μs     ±9.40%      642.38 μs      816.08 μs
-Jason          1.57 K      638.13 μs     ±7.69%      637.29 μs      809.00 μs
+Jason          2.37 K      421.81 μs     ±9.95%      402.08 μs      580.83 μs
+Jason 2        2.34 K      426.89 μs    ±10.18%      404.98 μs      589.29 μs
 
 Comparison: 
-Jason 2        1.57 K
-Jason          1.57 K - 1.00x slower +1.50 μs
+Jason          2.37 K
+Jason 2        2.34 K - 1.01x slower +5.08 μs
 
 Memory usage statistics:
 
 Name       Memory usage
-Jason 2       390.09 KB
-Jason         390.21 KB - 1.00x memory usage +0.117 KB
+Jason         390.09 KB
+Jason 2       390.09 KB - 1.00x memory usage +0 KB
 
 **All measurements for memory usage were the same**
 
 ##### With input Small #####
 Name              ips        average  deviation         median         99th %
-Jason 2        1.24 M      805.31 ns  ±6581.75%         625 ns        1750 ns
-Jason          1.12 M      890.39 ns  ±7093.95%         666 ns        1792 ns
+Jason          1.71 M      584.94 ns ±15061.47%         416 ns        1375 ns
+Jason 2        1.68 M      595.48 ns ±13786.03%         416 ns        1541 ns
 
 Comparison: 
-Jason 2        1.24 M
-Jason          1.12 M - 1.11x slower +85.08 ns
+Jason          1.71 M
+Jason 2        1.68 M - 1.02x slower +10.54 ns
 
 Memory usage statistics:
 
 Name       Memory usage
-Jason 2           528 B
-Jason             648 B - 1.23x memory usage +120 B
+Jason             528 B
+Jason 2           528 B - 1.00x memory usage +0 B
 
 **All measurements for memory usage were the same**
